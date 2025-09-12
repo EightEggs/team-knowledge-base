@@ -12,6 +12,11 @@ This repository is a curated collection of challenges, bugs, and operational iss
 
 ## Categories
 
-- **Data-Science-Seminar**: Eight_Eggs' Data Science Seminar Notes
-- **表面反应kMC模拟实用指南**: Eight_Eggs' kMC Introduction
+- [**Data-Science-Seminar**](./Data-Science-Seminar/): Eight_Eggs' Data Science Seminar Notes
+- [**表面反应kMC模拟实用指南**](./表面反应kMC模拟实用指南/): Eight_Eggs' kMC Introduction
 - ...
+
+## LICENSE
+
+Different categories/modules in this project may be distributed under separate open-source licenses.
+Please check the corresponding subdirectories for the specific license file.
