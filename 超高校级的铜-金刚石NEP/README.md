@@ -50,7 +50,8 @@ VASP-Phonopy%E8%AE%A1%E7%AE%97%E5%A3%B0%E5%AD%90%E8%B0%B1/
 >+ **复制1.relaxation中的CONTCAR POTCAR 到2.force_constants_dpft，新建INCAR KPOINTS**
 >+ **mv CONTCAR POSCAR-unitcell**
 >+ **安装Phonopy #用conda很好装**
->+ **生成超胞 phonopy -d –dim=”2 2 2″ -c POSCAR-unitcell # dim代表晶胞大小**
+>+ **生成超胞 # 推荐（常用）
+phonopy -d --dim="2 2 2" -c POSCAR-unitcell # dim代表晶胞大小**
 >+ **cp SPOSCAR POSCAR**
 >+ **INCAR设置如下**
 ISMEAR =  0            (Gaussian smearing)
