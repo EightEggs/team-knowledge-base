@@ -75,7 +75,7 @@ M
 3  3  3 #晶胞扩了 小一点弄得快
 0  0  0
 >+ **提交vasp计算** 获取vasprun.xml
->+ phonopy –fc vasprun.xml 获取力常数矩阵文件 **FORCE_CONSTANTS**
+>+ phonopy –-fc vasprun.xml 获取力常数矩阵文件 **FORCE_CONSTANTS**
 3. 声子色散计算（声子谱）
 新建文件夹 mkdir 3.phonon_dispersion 把2.force_constants_dpft中的vasprun.xml，POSCAR-unitcell都复制过来
 把POSCAR-unitcell改名为POSCAR
