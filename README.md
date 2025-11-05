@@ -15,6 +15,7 @@ This repository is a curated collection of challenges, bugs, and operational iss
 - [**Data-Science-Seminar**](./Data-Science-Seminar/): Eight_Eggs' Data Science Seminar Notes
 - [**表面反应kMC模拟实用指南**](./表面反应kMC模拟实用指南/): Eight_Eggs' kMC Introduction
 - [**GPUMD赤石集**](./GPUMD赤石集): yanhuibaofei's GPUMD Dataset Process
+- [**超高校级的铜-金刚石NEP**](./超高校级的铜-金刚石NEP): yanhuibaofei's GPUMD Dataset Process
 - ...
 
 ## LICENSE
