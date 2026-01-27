@@ -9,6 +9,7 @@ Kpoints在大胞中不宜设置过大，否则会导致算力需求急剧提升
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 目前积累的经验来看 kpoints才是决定vasp计算时间的主导因素
+2026.1.3 应该采用kpacing 才能避免k点密度不一致
 **方法三：
 ### ENCUT
 取ENMAX即可（SB言论） 但最好参考具体体系的机器学习势文章
@@ -28,6 +29,11 @@ E_per_atom = TOTEN/N_atomsET > ~0.001–0.005 eV/atom（1–5 meV/atom）不可�
 ![alt text](image-3.png)
 #### 本征热导率计算
 #### 径向分布函数
+共需要计算三部分：DFT，经验势，NEP
++ 经验势
+利用初始构型进行NPT弛豫 接着利用OVITO中coordinate ananlysis功能提取RDF单帧数据 利用脚本对其进行时间平均后绘图
++ NEP
+同理，利用gpumd进行模拟后提取 
 #### 声子色散（声子谱）
 1. 结构优化
 创建文件夹 mkdir 1.relaxation
@@ -50,8 +56,7 @@ VASP-Phonopy%E8%AE%A1%E7%AE%97%E5%A3%B0%E5%AD%90%E8%B0%B1/
 >+ **复制1.relaxation中的CONTCAR POTCAR 到2.force_constants_dpft，新建INCAR KPOINTS**
 >+ **mv CONTCAR POSCAR-unitcell**
 >+ **安装Phonopy #用conda很好装**
->+ **生成超胞 # 推荐（常用）
-phonopy -d --dim="2 2 2" -c POSCAR-unitcell # dim代表晶胞大小**
+>+ **生成超胞 phonopy -d –-dim="2 2 2″ -c POSCAR-unitcell # dim代表晶胞大小**
 >+ **cp SPOSCAR POSCAR**
 >+ **INCAR设置如下**
 ISMEAR =  0            (Gaussian smearing)
@@ -75,7 +80,7 @@ M
 3  3  3 #晶胞扩了 小一点弄得快
 0  0  0
 >+ **提交vasp计算** 获取vasprun.xml
->+ phonopy –-fc vasprun.xml 获取力常数矩阵文件 **FORCE_CONSTANTS**
+>+ phonopy --fc vasprun.xml 获取力常数矩阵文件 **FORCE_CONSTANTS**
 3. 声子色散计算（声子谱）
 新建文件夹 mkdir 3.phonon_dispersion 把2.force_constants_dpft中的vasprun.xml，POSCAR-unitcell都复制过来
 把POSCAR-unitcell改名为POSCAR
@@ -96,3 +101,12 @@ https://github.com/tang070205/tools 提供了许多NEP相关的工具
 用来画RMSE和Loss 且可以自动无视**无virial结构**进行绘图
 ![alt text](image-4.png)
 ![alt text](image-5.png)
+## 5.异质结构界面结合性质验证
+### 不同晶面构型的NEP-DFT结合能
+![alt text](image-12.png)
+### 不同界面距离下异质结的能量
+固定两端原子 并测量不同距离下的体系总能区别
+![alt text](image-13.png)
+![alt text](image-14.png)
+### 弛豫前后能量差
+![alt text](image-15.png)
